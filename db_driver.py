@@ -15,7 +15,7 @@ Neighbourhoods = ['AEROPORTO', 'ANDORINHAS', 'ANTÔNIO HONÓRIO', 'ARIOVALDO FAV
                   'SOLON BORGES', 'SÃO BENEDITO', 'SÃO CRISTÓVÃO', 'SÃO JOSÉ', 'SÃO PEDRO', 'TABUAZEIRO',
                   'UNIVERSITÁRIO', 'VILA RUBIM']
 
-
+"""
 def get_patient_mongo(id):
     # id = "60081e61a2b828629c1f8d22"
     import pymongo
@@ -25,11 +25,12 @@ def get_patient_mongo(id):
     query = {"_id": id}
     doc = col.find(query)
     return doc[0]
-
+"""
 
 def get_patient_demo(id):
     name = random.choice(["random name", "random name2", "random name3"])
     gender = random.choice(["Male", "Female"])
+    age = random.randint(0,100)
     location = random.choice(Neighbourhoods)
     scholarship = random.choice(["0", "1"])
     hypertension = random.choice(["0", "1"])
@@ -39,7 +40,7 @@ def get_patient_demo(id):
     sms_received = random.choice(["0", "1"])
     return {'Name': name, 'Gender': gender, 'Location': location, 'Scholarship': scholarship,
             'Hypertension': hypertension, 'Diabetes': diabetes, "Alcoholism": alcoholism,
-            'Handicap': handicap, "SMSReceived": sms_received}
+            'Handicap': handicap, "SMSReceived": sms_received, "Age": age}
 
 
 
