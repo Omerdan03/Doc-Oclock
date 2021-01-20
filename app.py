@@ -38,7 +38,7 @@ def home():
 @app.route('/predictions')
 def get_prediction():
     # data = get_data()
-    data = pd.DataFrame(data2)
+    data = pd.DataFrame(data2, index=[0])
     data['Gender'] = pd.Series(encoders[0].fit_transform(data['Gender']), index=data.index)
     encoders[1].fit(data['Neighbourhood'].to_numpy().reshape(-1, 1))
     enc_arr = encoders[1].transform(data['Neighbourhood'].to_numpy().reshape(-1, 1)).toarray()
