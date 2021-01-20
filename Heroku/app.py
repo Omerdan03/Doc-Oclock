@@ -4,11 +4,14 @@ import pickle
 
 import pandas as pd
 from flask import Flask, request, jsonify
+import tensorflow as tf
 
 app = Flask(__name__)
 
-model = pickle.load(open('model2.pickle', 'rb'))
-scaler = pickle.load(open('scaler.pickle', 'rb'))
+# model = pickle.load(open('model.pickle', 'rb'))
+model = tensorflow.keras.models.load_model('saved_model/my_model')
+encoders = pickle.load(open('encoders.pickle', 'rb'))
+demand = pickle.load(open('demand.pickle', 'rb'))
 
 
 @app.route("/")
@@ -17,14 +20,38 @@ def home():
 
 
 @app.route('/predictions')
-def results():
-    data = request.get_json(force=True)
-    data = pd.DataFrame(json.loads(data))
-    data = scaler.fit_transform(data)
-    prediction = model.predict(data)
-    output = list(map(int, prediction))
+def get_id():
+    ID = request.get_json(force=True)
+    # ID = pd.DataFrame(json.loads(ID))
+    # data = scaler.fit_transform(data)
+    # prediction = model.predict(data)
+    # output = list(map(int, prediction))
     # return jsonify(output)
-    return str(data)
+    return ID
+
+
+def get_data():
+    ID = get_id()
+    pass
+
+
+def get_prediction():
+    data = get_data()
+    data['Gender'] = pd.Series(encoders[0].fit_transform(data['Gender']), index=data.index)
+    encoders[1].fit(data['Neighbourhood'].to_numpy().reshape(-1, 1))
+    enc_arr = encoders[1].transform(data['Neighbourhood'].to_numpy().reshape(-1, 1)).toarray()
+    Neighbourhoods = encoders[1].get_feature_names()
+    df_Neighbourhoods = pd.DataFrame(data=enc_arr, columns=encoders[1].get_feature_names(),
+                                     index=data.index)
+
+    data = pd.concat([data, df_Neighbourhoods], axis=1)
+    data = pd.DataFrame(encoders[2].fit_transform(data), columns=data.columns)
+    predictions = list()
+    for day in range(6):
+        data['AppointmentDay'] = day
+        prediction = model.predict(data)
+        predictions.append(int(prediction))
+    return jsonify(predictions)
 
 
 if __name__ == '__main__':
