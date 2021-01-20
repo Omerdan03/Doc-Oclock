@@ -4,12 +4,12 @@ import pickle
 
 import pandas as pd
 from flask import Flask, request, jsonify
-import tensorflow as tf
+from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
 # model = pickle.load(open('model.pickle', 'rb'))
-model = tensorflow.keras.models.load_model('saved_model/my_model')
+model = load_model('saved_model/my_model')
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
 
