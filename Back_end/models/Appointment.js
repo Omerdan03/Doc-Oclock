@@ -8,9 +8,14 @@ const Appointment = new Schema(
         patient_id: {
             type: String,
         },
-        dateTimeSchedule: {
+        appointmentCreationDay: {
+            type: Date,
+        },
+        dateTimeAppointment: {
+            type: Date,
+        },
+        realTimeStart: {
             type: Number,
-            default: 1
         },
         duration: {
             type: String,
@@ -24,7 +29,7 @@ const Appointment = new Schema(
         status: {
             type: String,
         },
-        locatoin: {
+        location: {
             type: String
         },
         paymentDateTime: {

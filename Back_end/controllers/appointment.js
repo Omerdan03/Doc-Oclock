@@ -15,7 +15,7 @@ exports.appointment = async (req, res) => {
 //update appointment info
 exports.updateAppointment = async (req, res) => {
     let id = req.params.id
-    let update = lodash.pick(req.body, ["doctor_id", "patient_id", "dateTimeSchedule", "duration", "firstVisit", "location", "symptoms", "status", "paymentDateTime", "doctorSummary"]);
+    let update = lodash.pick(req.body, ["doctor_id", "patient_id", "realTimeStart", "dateTimeAppointment", "appointmentCreationDay", "duration", "firstVisit", "location", "symptoms", "status", "paymentDateTime", "doctorSummary"]);
     update = lodash.pickBy(update, lodash.identity);
 
     Appointment.findByIdAndUpdate(id, { $set: update }, { new: true }, (error, appointmentObj) => {
@@ -25,10 +25,10 @@ exports.updateAppointment = async (req, res) => {
 }
 
 exports.createAppointment = async (req, res) => {
-    const { error } = registerValidation(req.body)
-    if (error) {
-        return res.status(400).send(error.details[0].message)
-    }
+    // const { error } = registerValidation(req.body)
+    // if (error) {
+    //     return res.status(400).send(error.details[0].message)
+    // }
     //creat appointment
     const appointment = new Appointment({
         doctor_id: req.body.doctor_id,

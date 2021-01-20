@@ -24,19 +24,22 @@ const Patient = new Schema(
             type: String,
         },
         smoking: {
-            type: String
+            type: Boolean
         },
         alcoholAbuse: {
-            type: String
+            type: Boolean
         },
         drugAbuse: {
-            type: String
+            type: Boolean
         },
         disabilities: {
-            type: String
+            type: Boolean
+        },
+        hypertension: {
+            type: Boolean
         },
         education: {
-            type: String
+            type: Boolean
         },
         role: {
             type: String,

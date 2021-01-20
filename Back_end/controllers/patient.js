@@ -13,6 +13,7 @@ exports.patient = async (req, res) => {
         res.status(500).json({ error: e });
     }
 };
+
 //update patient info
 exports.updatePatient = async (req, res) => {
     let id = req.params.id
@@ -22,7 +23,7 @@ exports.updatePatient = async (req, res) => {
     if (emailExist) {
         return res.status(400).send('Email already exists')
     }
-    let update = lodash.pick(req.body, ["fullName", "birthDay", "phone", "email", "gender", "location", "maritalStatus", "smoking", "alcoholAbuse", "drugAbuse", "disabilities", "education"]);
+    let update = lodash.pick(req.body, ["fullName", "birthDay", "phone", "email", "gender", "location", "maritalStatus", "smoking", "hypertension", "alcoholAbuse", "drugAbuse", "disabilities", "education"]);
     update = lodash.pickBy(update, lodash.identity);
     update = lodash.merge(update, {
         password: hashPassword,
@@ -33,7 +34,6 @@ exports.updatePatient = async (req, res) => {
         else res.send('patient updated')
     })
 }
-
 
 exports.createPatients = async (req, res) => {
     const { error } = registerValidation(req.body)
