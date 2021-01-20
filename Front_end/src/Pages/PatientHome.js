@@ -1,6 +1,6 @@
 import { ListAppointments } from "../Components/ListAppointments";
 import { Container } from "react-bootstrap";
-import { DocNav } from "../Components/DocNav";
+import { DrNav } from "../Components/DrNav";
 
 export const PatientHome = () => {
   // request to api based on patient_id
@@ -33,7 +33,7 @@ export const PatientHome = () => {
   ];
   return (
     <Container>
-      <DocNav />
+      <DrNav />
       <h1>Patient Home</h1>
       <ListAppointments items={mockAppointments} />
     </Container>
