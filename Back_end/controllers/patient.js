@@ -83,6 +83,6 @@ exports.logInPatients = async (req, res) => {
         return res.status(400).send('Invalid password')
     }
     //creat token
-    const token = jwt.sign({ _id: patient._id }, process.env.TOKEN_SECRET)
+    const token = jwt.sign({ _id: patient._id }, process.env.SECRET)
     res.header('auth-token', token).send({ token: token, role: patient.role })
 }

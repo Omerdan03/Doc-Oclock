@@ -42,11 +42,15 @@ const Patient = new Schema(
             type: String,
             default: "patient"
         },
+        password: {
+            type: String
+        },
+
         patientAppointments: [],
     },
     {
         timestamps: true,
-        collection: 'users',
+        collection: 'patients',
     }
 );
 module.exports = mongoose.model('Patient', Patient);
