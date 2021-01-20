@@ -8,6 +8,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 model = pickle.load(open('model2.pickle', 'rb'))
+scaler = pickle.load(open('scaler.pickle', 'rb'))
 
 
 @app.route("/")
@@ -19,9 +20,11 @@ def home():
 def results():
     data = request.get_json(force=True)
     data = pd.DataFrame(json.loads(data))
+    data = scaler.fit_transform(data)
     prediction = model.predict(data)
     output = list(map(int, prediction))
-    return jsonify(output)
+    # return jsonify(output)
+    return str(data)
 
 
 if __name__ == '__main__':
