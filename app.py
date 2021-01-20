@@ -6,7 +6,6 @@ import pandas as pd
 from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 import zipfile
-archive = zipfile.ZipFile('images.zip', 'r')
 
 app = Flask(__name__)
 
