@@ -5,11 +5,14 @@ import pickle
 import pandas as pd
 from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
+import zipfile
+archive = zipfile.ZipFile('images.zip', 'r')
 
 app = Flask(__name__)
 
 # model = pickle.load(open('model.pickle', 'rb'))
-model = load_model(r'C:\Users\ronle\Desktop\ITC\course\Hackaton\Doc-Oclock\model.zip')
+archive = zipfile.ZipFile(r'C:\Users\ronle\Desktop\ITC\course\Hackaton\Doc-Oclock\model.zip', 'r')
+model = load_model(archive)
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
 data2 = {'Gender': 'F', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA', 'Scholarship': 0,
