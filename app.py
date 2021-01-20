@@ -10,6 +10,11 @@ app = Flask(__name__)
 model = pickle.load(open('model2.pickle', 'rb'))
 
 
+@app.route("/")
+def home():
+    return "This is the prediction API. Send a Json and get a prediction. "
+
+
 @app.route('/predictions')
 def results():
     data = request.get_json(force=True)
