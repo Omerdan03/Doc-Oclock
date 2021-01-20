@@ -1,6 +1,6 @@
 const Doctor = require('../models/Doctor');
 const lodash = require('lodash')
-const { doctorRegisterValidation, doctorLogInValidation } = require('../validation')
+const { doctorRegisterValidation, doctorLogInValidation } = require('../validationPatient')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
