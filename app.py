@@ -10,7 +10,7 @@ import zipfile
 app = Flask(__name__)
 
 # model = pickle.load(open('model.pickle', 'rb'))
-archive = zipfile.ZipFile(r'C:\Users\ronle\Desktop\ITC\course\Hackaton\Doc-Oclock\model.zip', 'r')
+archive = zipfile.ZipFile(r'model.zip', 'r')
 model = load_model(archive)
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
