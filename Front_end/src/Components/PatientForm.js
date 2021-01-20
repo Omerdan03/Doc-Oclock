@@ -1,46 +1,81 @@
 import { Container, Form, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import axios from 'axios'
 
 export const PatientForm = () => {
+    const [input, setInput] = useState({
+        firsName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        age: '',
+        gender: '',
+        scholarship: '',
+        neighbourhood: '',
+        firstVisit: '',
+        handicapped: '',
+        diabetic: '',
+        hypertension:'',
+        alcoholic: '',
+        status: '',
+        symptoms: '',
+    })
+
+    const handleChange = e =>{
+        const { name, value } = e.target;
+    
+        setInput(prevInput => {
+          return{
+          ...prevInput,
+          [name]: value
+          }
+        })
+      }
+      const handleSubmit= e =>{
+        e.preventDefault();
+        console.log(input)
+        axios.put('http://localhost:3001/pet', input)
+      }  
     return (
         <Container className='patient-form'>
-            <Form action='#' encType='multipart/form-data'>
+            <Form action='#' onSubmit={handleSubmit} encType='multipart/form-data'>
                 <Form.Group>
                     <Form.Label>First name</Form.Label>
-                    <Form.Control name='first_name' type="text" placeholder="Enter first name" />
+                    <Form.Control name='firstName' type="text" value={input.firstName} onChange={handleChange} placeholder="Enter first name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Last name</Form.Label>
-                    <Form.Control name='last_name' type="text" placeholder="Enter last name" />
+                    <Form.Control name='lastName' type="text" value={input.lastName} onChange={handleChange} placeholder="Enter last name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Primary email</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" value={input.email} onChange={handleChange} placeholder="Enter email" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Enter new password" />
+                    <Form.Control name='password' type="password" value={input.password} onChange={handleChange} placeholder="Enter new password" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Age</Form.Label>
-                    <Form.Control name='age' type="number" placeholder="Enter age" />
+                    <Form.Control name='age' type="number" placeholder="Enter age" value={input.age} onChange={handleChange}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Select gender</Form.Label>
-                    <Form.Control name='gender' as="select">
+                    <Form.Control name='gender' value={input.gender} onChange={handleChange} as="select">
                         <option>Male</option>
                         <option>Female</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Did you graduate high school?</Form.Label>
-                    <Form.Control name='scholarship' as="select">
+                    <Form.Control name='scholarship' value={input.scholarship} onChange={handleChange} as="select">
                         <option>Yes</option>
                         <option>No</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Select neighborhood</Form.Label>
-                    <Form.Control name='neighbourhood' as="select">
+                    <Form.Control name='neighbourhood' value={input.neighbourhood} onChange={handleChange} as="select">
                         <option>AEROPORTO</option>
                         <option>ANDORINHAS</option>
                         <option>ANTÔNIO HONÓRIO</option>
@@ -125,35 +160,53 @@ export const PatientForm = () => {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
+                    <Form.Label>Is this your first visit to the doctor?</Form.Label>
+                    <Form.Control name='firstVisit' value={input.firstVisit} onChange={handleChange} as="select">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
                     <Form.Label>Do you have any physical disabilities?</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control name='handicapped' value={input.handicapped} onChange={handleChange} as="select">
                         <option>Yes</option>
                         <option>No</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Are you diabetic?</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control name='diabetic' value={input.diabetic} onChange={handleChange} as="select">
                         <option>Yes</option>
                         <option>No</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Have you ever been diagnosed with hypertension (high blood pressure)?</Form.Label>
-                    <Form.Control name='scholarship' as="select">
+                    <Form.Control name='hypertension' value={input.hypertension} onChange={handleChange} as="select">
                         <option>Yes</option>
                         <option>No</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Do you consume more than 14 alcoholic drinks per week?</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control name='alcoholic' value={input.alcoholic} onChange={handleChange} as="select">
                         <option>Yes</option>
                         <option>No</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    <Button variant='primary'>Update profile</Button>
+                    <Form.Label>What is your marital status?</Form.Label>
+                    <Form.Control name='status' value={input.status} onChange={handleChange} as="select">
+                        <option>Married</option>
+                        <option>Single</option>
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Please list any current symptoms</Form.Label>
+                    <Form.Control name='symptoms' value={input.symptoms} onChange={handleChange} type="text" placeholder="Enter last name" />
+                </Form.Group>
+                <Form.Group>
+                    <Button variant='primary' type='submit'>Update profile</Button>
                 </Form.Group>
             </Form>
         </Container>

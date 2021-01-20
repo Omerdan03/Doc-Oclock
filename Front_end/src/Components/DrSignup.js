@@ -3,9 +3,9 @@ import { Form, Button } from 'react-bootstrap'
 import { useSignup } from '../Hooks/HooksIndex'
 import { signupValidate } from '../Validation/validateIndex'
 
-export const PatientSignup = () => {
+export const DrSignup = () => {
 
-    const {handleChange, values, handleSubmit, errors} = useSignup(signupValidate);
+    const {handleChange, values, handleSubmit, errors} = useSignup({signupValidate});
 
     return (
         <Form onSubmit={handleSubmit} className='loginForm' action="#" encType="multipart/form-data">

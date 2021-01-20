@@ -1,6 +1,6 @@
 import { Modal, Button, Container, Form, Tabs, Tab } from "react-bootstrap";
 import { useState } from "react";
-import { PatientNav, Signup, Login } from "../Components/ComponentIndex";
+import { PatientNav, PatientSignup, PatientLoginForm } from "../Components/ComponentIndex";
 
 export const PatientLogin = () => {
   const [show, setShow] = useState(false);
@@ -20,10 +20,10 @@ export const PatientLogin = () => {
         <Modal.Body>
           <Tabs defaultActiveKey="login">
             <Tab eventKey="login" title="Login">
-              <Login />
+              <PatientLoginForm />
             </Tab>
             <Tab eventKey="signup" title="Sign Up">
-              <Signup />
+              <PatientSignup />
             </Tab>
           </Tabs>
         </Modal.Body>
