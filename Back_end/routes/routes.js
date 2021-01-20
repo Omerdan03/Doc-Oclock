@@ -21,6 +21,6 @@ router.post('/login-patient', logInPatients);
 
 //appointment routes
 router.put('/update-appointment/:id', updateAppointment);
-router.post('/create-appointment', createAppointment);
+router.post('/create-appointment', verifyToken, createAppointment);
 
 module.exports = router

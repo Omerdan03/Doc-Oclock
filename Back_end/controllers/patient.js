@@ -1,11 +1,11 @@
 const Patient = require('../models/Patient');
 const lodash = require('lodash')
-const { registerValidation, logInValidation } = require('../validationPatient')
+const { patientRegisterValidation, patientLogInValidation } = require('../validationPatient')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 // Get current patient profile
-exports.patient = async (req, res) => {
+exports.patient = async(req, res) => {
     try {
         const profile = await Patient.find({ email: req.params.id });
         res.status(200).json({ success: profile });
@@ -15,7 +15,7 @@ exports.patient = async (req, res) => {
 };
 
 //update patient info
-exports.updatePatient = async (req, res) => {
+exports.updatePatient = async(req, res) => {
     let id = req.params.id
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(req.body.password, salt)
@@ -35,8 +35,8 @@ exports.updatePatient = async (req, res) => {
     })
 }
 
-exports.createPatients = async (req, res) => {
-    const { error } = registerValidation(req.body)
+exports.createPatients = async(req, res) => {
+    const { error } = patientRegisterValidation(req.body)
     if (error) {
         return res.status(400).send(error.details[0].message)
     }
@@ -48,7 +48,7 @@ exports.createPatients = async (req, res) => {
     //hash passwords 
     const salt = await bcrypt.genSalt(10)
     const hashPassword = await bcrypt.hash(req.body.password, salt)
-    //creat patient
+        //creat patient
     const patient = new Patient({
         fullName: req.body.fullName,
         phone: req.body.phone,
@@ -69,8 +69,8 @@ exports.createPatients = async (req, res) => {
         res.status(400).send(err)
     }
 }
-exports.logInPatients = async (req, res) => {
-    const { error } = logInValidation(req.body)
+exports.logInPatients = async(req, res) => {
+    const { error } = patientLogInValidation(req.body)
     if (error) {
         return res.status(400).send(error.details[0].message)
     }
