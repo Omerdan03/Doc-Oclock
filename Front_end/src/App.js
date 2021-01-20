@@ -1,28 +1,31 @@
-import logo from "./logo.svg";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Home, DrLogin, PatientLogin, AdminDash, PatientHome } from "./Pages/PageIndex";
+import logo from './logo.svg';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Home, DrLogin, PatientLogin, AdminDash, PatientHome, DrHome } from './Pages/PageIndex';
 
 function App() {
   return (
     <Container>
       <Router>
         <Switch>
-        <Route path="/admindash">
+          <Route path='/admindash'>
             <AdminDash />
           </Route>
-          <Route path="/patientlogin">
+          <Route path='/patientlogin'>
             <PatientLogin />
           </Route>
-          <Route path="/patienthome">
+          <Route path='/patienthome'>
             <PatientHome />
           </Route>
-          <Route path="/drlogin">
+          <Route path='/doctorhome'>
+            <DrHome />
+          </Route>
+          <Route path='/drlogin'>
             <DrLogin />
           </Route>
-          <Route path="/">
+          <Route path='/'>
             <Home />
           </Route>
         </Switch>

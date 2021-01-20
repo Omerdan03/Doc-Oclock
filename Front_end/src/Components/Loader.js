@@ -1,1 +1,1 @@
-export const Loader = () => <div className='loader'>Loading&hellip;</div>;
+export const Loader = () => <div className="loader">Loading&hellip;</div>;
