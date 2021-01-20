@@ -11,19 +11,17 @@ const userSchema = new Schema(
         lastName: {
             type: String,
         },
-        bio: {
-            type: String,
-        },
-        phone: {
-            type: String,
-        },
-        admin: {
+        doctor: {
             type: Boolean,
             default: false,
         },
-        savedSneakers: [],
-        purchasedSneakers: [],
-        sellingSneakers: [],
+        patient: {
+            type: Boolean,
+            default: false,
+        },
+        doctorSchedule: [],
+        patientAppointments: [],
+
     },
     {
         timestamps: true,
