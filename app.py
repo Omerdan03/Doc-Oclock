@@ -12,14 +12,8 @@ app = Flask(__name__)
 model = load_model('saved_model/my_model')
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
-data2 = pd.DataFrame({'Gender': 'F',  'ScheduledDay':'2016-04-29',
-                      'AppointmentDay': '2016-04-29', 'Age': 62,
-                      'Neighbourhood': 'JARDIM DA PENHA', 'Scholarship': 0,
-                      'Hypertension': 1,
-                      'Diabetes': 0, 'Alcoholism': 0, 'Handicap': 0,
-       'SMSReceived': 0, 'NoShow': 1, 'ScheduledDay_DOW': 'Friday',
-                      'AppointmentDay_DOW': 'Friday',
-       'Waiting_Time_days': 0})
+data2 = {'Gender': 'F', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA', 'Scholarship': 0,
+                      'Hypertension': 1, 'Diabetes': 0, 'Alcoholism': 0, 'Handicap': 0, 'SMSReceived': 0}
 
 @app.route("/")
 def home():
