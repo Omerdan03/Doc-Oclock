@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="483a4e64-5ce2-4e4f-b450-7e87d9b1c1f9" name="Default Changelist" comment="reorder files">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data_Science/encoders.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/Data_Science/encoders.pickle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611169608404</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="commit xmls">
+      <created>1611170086309</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1611170086309</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,6 +191,7 @@
     <MESSAGE value="change folder" />
     <MESSAGE value="finish model and pickled" />
     <MESSAGE value="update scaler encoder" />
-    <option name="LAST_COMMIT_MESSAGE" value="update scaler encoder" />
+    <MESSAGE value="commit xmls" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit xmls" />
   </component>
 </project>
