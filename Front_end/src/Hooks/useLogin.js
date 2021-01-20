@@ -1,14 +1,16 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
 
-export const useLogin = () =>{
-    const [ values, setValues ] = useState({
+export const useLogin = () => {
+    const [values, setValues] = useState({
         email: '',
         password: ''
     })
 
-    const [ errors, setErrors ] = useState({})
+    const [errors, setErrors] = useState({})
 
-    const handleChange = e =>{
+    const handleChange = e => {
         const { name, value } = e.target;
         setValues({
             ...values,
@@ -16,9 +18,17 @@ export const useLogin = () =>{
         })
     }
 
-    const handleSubmit = e =>{
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(values)
+        const response = await axios.post(
+            "http://localhost:5000/api/login-patient",
+            values
+        );
+        if (response.status === 200) {
+            localStorage.setItem("UserToken", response.data.token);
+            console.log("user is logged in")
+                // useHistory().push("/patienthome")
+        }
     }
 
     return { handleChange, values, handleSubmit }

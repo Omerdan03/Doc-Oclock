@@ -1,4 +1,4 @@
-import { useLogin } from './useLogin'
-import { useSignup } from './useSignup'
+import { useLogin } from "./useLogin";
+import { usePatientSignup } from "./usePatientSignup";
 
-export { useLogin, useSignup }
+export { useLogin, usePatientSignup };
