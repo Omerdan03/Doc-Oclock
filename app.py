@@ -9,7 +9,7 @@ from tensorflow.keras.models import load_model
 app = Flask(__name__)
 
 # model = pickle.load(open('model.pickle', 'rb'))
-model = load_model('mode')
+model = load_model('model')
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
 data2 = {'Gender': 'F', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA', 'Scholarship': 0,
