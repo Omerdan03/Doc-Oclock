@@ -16,7 +16,7 @@ function App() {
         <Route path="/updatedr">
             <UpdateDr />
           </Route>
-        <Route path="/updatepatient">
+          <Route path="/updatepatient">
             <UpdatePatient />
           </Route>
         <Route path="/admindash">
