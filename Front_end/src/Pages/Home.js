@@ -1,10 +1,10 @@
 import { Container } from "react-bootstrap";
-import { DocNav } from "../Components/DocNav";
+import { DrNav } from "../Components/ComponentIndex";
 
 export const Home = () => {
   return (
     <Container className="App">
-      <DocNav />
+      <DrNav />
       <h1>Doc-o-clock</h1>
       <h2>I'm a</h2>
       <a href="/patientlogin" className="btn btn-primary btn-lg">

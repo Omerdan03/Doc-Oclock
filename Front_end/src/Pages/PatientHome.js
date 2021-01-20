@@ -1,19 +1,6 @@
-<<<<<<< HEAD
-import { Container } from 'react-bootstrap'
-import { PatientNav } from '../Components/ComponentIndex'
-
-export const PatientHome = () => {
-    return (
-        <Container>
-            <PatientNav />
-            <h1>Patient Home</h1>
-        </Container>
-    )
-}
-=======
 import { ListAppointments } from "../Components/ListAppointments";
 import { Container } from "react-bootstrap";
-import { DocNav } from "../Components/DocNav";
+import { DrNav } from "../Components/DrNav";
 
 export const PatientHome = () => {
   // request to api based on patient_id
@@ -46,10 +33,9 @@ export const PatientHome = () => {
   ];
   return (
     <Container>
-      <DocNav />
+      <DrNav />
       <h1>Patient Home</h1>
       <ListAppointments items={mockAppointments} />
     </Container>
   );
 };
->>>>>>> fc195ec4a0ff7ac4904eb996c127197729d72937
