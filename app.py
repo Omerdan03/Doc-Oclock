@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-model = pickle.load(open('model.pickle', 'rb'))
+model = pickle.load(open('model2.pickle', 'rb'))
 
 
 @app.route('/predictions')
