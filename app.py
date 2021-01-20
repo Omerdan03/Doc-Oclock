@@ -41,7 +41,7 @@ def home():
 #     ID = get_id()
 #     pass
 
-
+@app.route('/predictions')
 def get_prediction():
     # data = get_data()
     data = data2
