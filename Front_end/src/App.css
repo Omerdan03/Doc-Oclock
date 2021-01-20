@@ -1,0 +1,24 @@
+a{
+  display: block;
+  margin: 20px;
+}
+
+.App{
+  text-align: center;
+  background-color: lightblue;
+  border-radius: 6px;
+  height: 100vh
+}
+
+.block{
+  display: block;
+}
+
+.loginForm{
+  margin: 15px;
+}
+
+.patient-nav{
+  border-radius: 6px;
+  padding: 0px;
+}
