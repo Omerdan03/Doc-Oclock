@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="483a4e64-5ce2-4e4f-b450-7e87d9b1c1f9" name="Default Changelist" comment="reorder files">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="EDA_predictions" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1nC4Z52FG7H7fuPPCuORAq5vXEA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="483a4e64-5ce2-4e4f-b450-7e87d9b1c1f9" name="Default Changelist" comment="" />
+      <created>1610880790507</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610880790507</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Added empty files for folder initialize">
+      <created>1610880962751</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610880962751</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add data and EDA">
+      <created>1611133853434</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611133853434</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add data and EDA">
+      <created>1611140455595</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611140455595</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add data and EDA">
+      <created>1611144415550</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611144415550</updated>
+    </task>
+    <task id="LOCAL-00005" summary="reorder files">
+      <created>1611144511507</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611144511507</updated>
+    </task>
+    <task id="LOCAL-00006" summary="re order files">
+      <created>1611144657139</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611144657139</updated>
+    </task>
+    <task id="LOCAL-00007" summary="re order files">
+      <created>1611144731908</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611144731908</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add deep learning">
+      <created>1611153163916</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611153163916</updated>
+    </task>
+    <task id="LOCAL-00009" summary="separate EDA and base model">
+      <created>1611164427578</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1611164427578</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add DNN model">
+      <created>1611165573179</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1611165573179</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add DNN model">
+      <created>1611165586380</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1611165586380</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add xml to gitignore">
+      <created>1611166067748</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1611166067761</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add gitignore">
+      <created>1611166231516</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1611166231516</updated>
+    </task>
+    <task id="LOCAL-00014" summary="change folder">
+      <created>1611166263615</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1611166263615</updated>
+    </task>
+    <task id="LOCAL-00015" summary="finish model and pickled">
+      <created>1611169069921</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1611169069921</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update scaler encoder">
+      <created>1611169578430</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1611169578430</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update scaler encoder">
+      <created>1611169608404</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1611169608404</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added empty files for folder initialize" />
+    <MESSAGE value="Add data and EDA" />
+    <MESSAGE value="reorder files" />
+    <MESSAGE value="re order files" />
+    <MESSAGE value="add deep learning" />
+    <MESSAGE value="separate EDA and base model" />
+    <MESSAGE value="Add DNN model" />
+    <MESSAGE value="add xml to gitignore" />
+    <MESSAGE value="add gitignore" />
+    <MESSAGE value="change folder" />
+    <MESSAGE value="finish model and pickled" />
+    <MESSAGE value="update scaler encoder" />
+    <option name="LAST_COMMIT_MESSAGE" value="update scaler encoder" />
+  </component>
+</project>
