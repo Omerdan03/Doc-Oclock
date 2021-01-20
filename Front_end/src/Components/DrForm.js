@@ -1,32 +1,54 @@
-import { Container, Form } from 'react-bootstrap'
+import { Container, Form, Button } from 'react-bootstrap'
+import { useState } from 'react'
+import axios from 'axios'
 
 export const DrForm = () => {
+    const [input, setInput] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        clinic_name: '',
+        speciality: '',
+    })
+
+    const handleChange = e =>{
+        const { name, value } = e.target;
+    
+        setInput(prevInput => {
+          return{
+          ...prevInput,
+          [name]: value
+          }
+        })
+      }
+      const handleSubmit= e =>{
+        e.preventDefault();
+        console.log(input)
+        axios.put('http://localhost:3001/pet', input)
+      }    
+
     return (
         <Container>
-            <Form action='#' encType='multipart/form-data'>
+            <Form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <Form.Group>
                     <Form.Label>First name</Form.Label>
-                    <Form.Control name='first_name' type="text" placeholder="Enter first name" />
+                    <Form.Control name='first_name' value={input.first_name} onChange={handleChange} type="text" placeholder="Enter first name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Last name</Form.Label>
-                    <Form.Control name='last_name' type="text" placeholder="Enter first name" />
+                    <Form.Control name='last_name' value={input.last_name} type="text" onChange={handleChange} placeholder="Enter last name" />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control name='first_name' type="text" placeholder="Enter first name" />
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control name='email' value={input.email} type="email" onChange={handleChange} placeholder="Enter email" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Clinic/hopsital name</Form.Label>
-                    <Form.Control name='clinic_name' type="text" placeholder="Enter first name" />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Speciality</Form.Label>
-                    <Form.Control name='first_name' type="text" placeholder="Enter first name" />
+                    <Form.Control name='clinic_name' value={input.clinic_name} onChange={handleChange} type="text" placeholder="Enter first name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Select speciality</Form.Label>
-                    <Form.Control name='neighbourhood' as="select">
+                    <Form.Control name='speciality' as="select">
                         <option>Allergy/immunology</option>
                         <option>Anesthesiology</option>
                         <option>Dermatology</option>
@@ -49,6 +71,7 @@ export const DrForm = () => {
                         <option>Urology</option>
                     </Form.Control>
                 </Form.Group>
+                <Button type='submit'>Update profile</Button>
             </Form>
         </Container>
     )

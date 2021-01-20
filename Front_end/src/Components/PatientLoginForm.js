@@ -1,7 +1,7 @@
 import { Form, Button } from 'react-bootstrap'
 import { useLogin } from '../Hooks/useLogin'
 
-export const Login = () => {
+export const PatientLoginForm = () => {
     const {handleChange, values, handleSubmit} = useLogin();
 
     return (
