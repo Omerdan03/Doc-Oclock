@@ -3,13 +3,19 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Home, DrLogin, PatientLogin, AdminDash, PatientHome } from "./Pages/PageIndex";
+import { Home, DrLogin, PatientLogin, AdminDash, PatientHome, UpdatePatient, UpdateDr } from "./Pages/PageIndex";
 
 function App() {
   return (
     <Container>
       <Router>
         <Switch>
+        <Route path="/updatedr">
+            <UpdateDr />
+          </Route>
+        <Route path="/updatepatient">
+            <UpdatePatient />
+          </Route>
         <Route path="/admindash">
             <AdminDash />
           </Route>
