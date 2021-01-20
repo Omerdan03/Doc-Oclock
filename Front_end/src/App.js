@@ -7,36 +7,36 @@ import { Home, DrLogin, PatientLogin, AdminDash, PatientHome, UpdatePatient, Upd
 
 function App() {
   return (
-    <Container>
-      <Router>
-        <Switch>
-          <Route path="/updatedr">
-            <UpdateDr />
-          </Route>
-          <Route path="/updatepatient">
-            <UpdatePatient />
-          </Route>
-          <Route path="/admindash">
-            <AdminDash />
-          </Route>
-          <Route path="/patientlogin">
-            <PatientLogin />
-          </Route>
-          <Route path="/patienthome">
-            <PatientHome />
-          </Route>
-          <Route path="/drhome">
-            <DrHome />
-          </Route>
-          <Route path="/drlogin">
-            <DrLogin />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </Router>
-    </Container>
+    // <Container>
+    <Router>
+      <Switch>
+        <Route path="/updatedr">
+          <UpdateDr />
+        </Route>
+        <Route path="/updatepatient">
+          <UpdatePatient />
+        </Route>
+        <Route path="/admindash">
+          <AdminDash />
+        </Route>
+        <Route path="/patientlogin">
+          <PatientLogin />
+        </Route>
+        <Route path="/patienthome">
+          <PatientHome />
+        </Route>
+        <Route path="/drhome">
+          <DrHome />
+        </Route>
+        <Route path="/drlogin">
+          <DrLogin />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+    // </Container>
   );
 }
 
