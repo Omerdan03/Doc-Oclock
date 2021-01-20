@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const { user, updateUser } = require('../controllers/user');
-// const { register, profile } = require('../controllers/auth');
+const { patient, updatePatient, createPatients, logInPatients } = require('../controllers/patient');
 
-// user routes
-// router.put('/update-user/:id', updateUser);
-// router.get('/', register)
+// patient routes
+router.get('/patient', patient);
+router.put('/update-patient/:id', updatePatient);
+router.post('/register-patient', createPatients);
+router.post('/login-patient', logInPatients);
+
 
 
 module.exports = router
