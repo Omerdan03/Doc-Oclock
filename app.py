@@ -40,7 +40,7 @@ def get_prediction():
     req_day = in_dict['requestedDate']
     # req_day = '2021-01-28'
     req_day = datetime.datetime.strptime(req_day, '%Y-%m-%d')
-    data = get_patient_mongo('60094e1f3e94cd527cf36bb6')
+    # data = get_patient_mongo('60094e1f3e94cd527cf36bb6')
     data = get_patient_mongo(ID)
     df = pd.DataFrame(index=[0])
     if data['Gender'].lower() == 'female':
