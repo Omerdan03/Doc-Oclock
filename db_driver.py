@@ -30,7 +30,7 @@ def get_patient_mongo(id):
 def get_patient_demo(id):
     name = random.choice(["random name", "random name2", "random name3"])
     gender = random.choice(["Male", "Female"])
-    age = random.randint(0,100)
+    age = random.randint(0, 100)
     location = random.choice(Neighbourhoods)
     scholarship = random.choice(["0", "1"])
     hypertension = random.choice(["0", "1"])
