@@ -12,7 +12,7 @@ app = Flask(__name__)
 model = load_model('model')
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
-data2 = {'Gender': 'F','ScheduledDay': '2016-04-29T18:38:08Z', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA',
+data2 = {'Gender': 'F', 'ScheduledDay': '2016-04-29T18:38:08Z', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA',
          'Scholarship': 0, 'Hypertension': 1, 'Diabetes': 0, 'Alcoholism': 0, 'Handicap': 0}
 
 @app.route("/")
@@ -38,12 +38,12 @@ def home():
 @app.route('/predictions')
 def get_prediction():
     # data = get_data()
-    data = pd.DataFrame(data2, index=[0])
-    data['Gender'] = pd.Series(encoders[0].transform(data['Gender']), index=data.index)
-    data['ScheduledDay'] = pd.to_datetime(data['ScheduledDay']).dt.date.astype('datetime64[ns]').dt.weekday
+    data = pd.DataFrame(data2, index=[0])  # TODO The data should be in the same order like df_t in order for the model to work. \
+    # TODO (gender - ScheduledDay - AppointmentDay - wait_time - Scholarship - Hypertension - Diabetes - Alcoholism - Handicap - SMSReceived - encoded Neighbourhood
+    data['Gender'] = pd.Series(encoders[0].transform(data['Gender']), index=data.index)  # TODO the gender is Male or female not M/F like our database (your encoder wont work)
+    data['ScheduledDay'] = pd.to_datetime(data['ScheduledDay']).dt.date.astype('datetime64[ns]').dt.weekday  # TODO ScheduledDay is today not given
     # encoders[1].fit(data['Neighbourhood'].to_numpy().reshape(-1, 1))
     enc_arr = encoders[1].transform(data['Neighbourhood'].to_numpy().reshape(-1, 1)).toarray()
-    Neighbourhoods = encoders[1].get_feature_names()
     df_neighbourhoods = pd.DataFrame(data=enc_arr, columns=encoders[1].get_feature_names(),
                                      index=data.index)
 
@@ -51,10 +51,10 @@ def get_prediction():
     data.drop('Neighbourhood', axis=1, inplace=True)
     data = pd.DataFrame(encoders[2].fit_transform(data), columns=data.columns)
     predictions = list()
-    for day in range(6):
+    for day in range(6):      # TODO We should not predict on day 5 & 6
         data['ScheduledDay'] = day
-        prediction = model.predict(data)
-        predictions.append(int(prediction))
+        prediction = model.predict(data)  # TODO the wait time should be different between each of those prediction
+        predictions.append(int(prediction))   # TODO why int?
     return jsonify(predictions)
 
 
