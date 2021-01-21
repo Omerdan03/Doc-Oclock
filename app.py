@@ -84,7 +84,7 @@ def get_prediction():
 
 
 if __name__ == '__main__':
-    print(get_prediction())
+    # print(get_prediction())
     port = os.environ.get('PORT')
 
     if port:
