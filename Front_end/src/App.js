@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Home, DrLogin, PatientLogin, AdminDash, PatientHome, UpdatePatient, UpdateDr, DrHome } from "./Pages/PageIndex";
-
+import CreateAppointment from "./Components/CreatAppointments";
 function App() {
   return (
     <div>
@@ -31,9 +31,13 @@ function App() {
           <Route path="/drlogin">
             <DrLogin />
           </Route>
-          <Route path="/">
+          <Route path="/createAppointment">
+            <CreateAppointment />
+          </Route>
+          <Route exact path="/">
             <Home />
           </Route>
+
         </Switch>
       </Router>
     </div>
