@@ -83,11 +83,10 @@ def get_prediction():
         opening = get_opening(new_key)
         if opening <= 0:
             output[new_key] = 0
-        elif predictions[key] > 0.5 - (opening/7)*(0.5-0.2):
+        elif predictions[key] > 0.5 - ((7-opening)/7)*(0.5-0.2):
             output[new_key] = 0
         else:
             output[new_key] = 1
-    #return output
     return jsonify(output)
 
 
