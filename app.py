@@ -39,7 +39,7 @@ def home():
 def get_prediction():
     # data = get_data()
     data = pd.DataFrame(data2, index=[0])  # TODO The data should be in the same order like df_t in order for the model to work. \
-    # TODO (gender - ScheduledDay - AppointmentDay - wait_time - Scholarship - Hypertension - Diabetes - Alcoholism - Handicap - SMSReceived - encoded Neighbourhood
+    # TODO (gender - Age - ScheduledDay - AppointmentDay - wait_time - Scholarship - Hypertension - Diabetes - Alcoholism - Handicap - SMSReceived - encoded Neighbourhood
     data['Gender'] = pd.Series(encoders[0].transform(data['Gender']), index=data.index)  # TODO the gender is Male or female not M/F like our database (your encoder wont work)
     data['ScheduledDay'] = pd.to_datetime(data['ScheduledDay']).dt.date.astype('datetime64[ns]').dt.weekday  # TODO ScheduledDay is today not given
     # encoders[1].fit(data['Neighbourhood'].to_numpy().reshape(-1, 1))
@@ -54,7 +54,7 @@ def get_prediction():
     for day in range(6):      # TODO We should not predict on day 5 & 6
         data['ScheduledDay'] = day
         prediction = model.predict(data)  # TODO the wait time should be different between each of those prediction
-        predictions.append(int(prediction))   # TODO why int?
+        predictions.append(prediction)   # TODO why int?
     return jsonify(predictions)
 
 
