@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 export const useLogin = () =>{
     const [ values, setValues ] = useState({
@@ -16,10 +17,20 @@ export const useLogin = () =>{
         })
     }
 
-    const handleSubmit = e =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(values)
-    }
+        const response = await axios.post(
+            "http://localhost:5000/api/login-patient",
+            values
+        );
+
+        if (response.status === 200) {
+            alert("Logged in succesfully")
+            localStorage.setItem("UserToken", response.data.token);
+            localStorage.setItem('role', response.data.role);
+        }
+    };
+
 
     return { handleChange, values, handleSubmit }
 }

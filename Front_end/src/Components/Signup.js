@@ -11,23 +11,13 @@ export const Signup = () => {
         <Form onSubmit={handleSubmit} className='loginForm' action="#" encType="multipart/form-data">
             <Form.Group>
                 <Form.Control
-                    name="firstName"
+                    name="fullName"
                     type="text"
-                    placeholder="Enter first name"
-                    value={values.firstName}
+                    placeholder="Enter full name"
+                    value={values.fullName}
                     onChange={handleChange}
                 />
-                {errors.firstName && <div>{errors.firstName}</div>}
-            </Form.Group>
-            <Form.Group>
-                <Form.Control
-                    name="lastName"
-                    type="text"
-                    value={values.lastName}
-                    onChange={handleChange}
-                    placeholder="Enter last name"
-                />
-                {errors.lastName && <div>{errors.lastName}</div>}
+                {errors.fullName && <div>{errors.fullName}</div>}
             </Form.Group>
             <Form.Group>
                 <Form.Control
@@ -48,16 +38,6 @@ export const Signup = () => {
                     placeholder="Enter password"
                 />
                 {errors.password && <div>{errors.password}</div>}
-            </Form.Group>
-            <Form.Group>
-                <Form.Control
-                    name="confirmPassword"
-                    type="password"
-                    value={values.confirmPassword}
-                    onChange={handleChange}
-                    placeholder="Confirm password"
-                />
-                {errors.confirmPassword && <div>{errors.confirmPassword}</div>}
             </Form.Group>
             <Form.Group>
                 <Button variant="primary" type="submit">

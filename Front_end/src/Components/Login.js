@@ -4,22 +4,23 @@ import axios from './axios'
 import { useHistory } from 'react-router-dom'
 
 export const Login = () => {
-    const {handleChange, values, handleSubmit} = useLogin();
-  console.log(handleSubmit)
+  const { handleChange, values, handleSubmit } = useLogin();
+
 
   const logIn = async (event) => {
     event.preventDefault()
-    const response = await axios.post("/user/login", values)
+    const response = await axios.post("/login-patient", values)
     if (response.status === 200) {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('role', response.data.role);
+      console.log("login complite")
     }
-    if (localStorage.getItem('role') === "basic") {
-      history.push('/home-login')
-    } else {
-      history.push('/adm')
-    }
-    const reload = window.location.reload()
+    // if (localStorage.getItem('role') === "basic") {
+    //   history.push('/home-login')
+    // } else {
+    //   history.push('/adm')
+    // }
+    // const reload = window.location.relsoad()
   }
 
     return (
@@ -43,7 +44,7 @@ export const Login = () => {
                   />
                 </Form.Group>
                 <Form.Group>
-                  <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit">
                     Login
                   </Button>
                 </Form.Group>

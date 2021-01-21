@@ -1,12 +1,10 @@
 import { useState } from 'react'
-
+import axios from 'axios'
 export const useSignup = validate =>{
     const [ values, setValues ] = useState({
-        firstName: '',
-        lastName: '',
+        fullName: '',
         email: '',
         password: '',
-        confirmPassword: '',
     })
 
     const [ errors, setErrors ] = useState({})
@@ -18,9 +16,18 @@ export const useSignup = validate =>{
             [name]: value
         })
     }
-    const handleSubmit = e =>{
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors(validate(values))
+        const response = await axios.post(
+            "http://localhost:5000/api/register-patient",
+            values
+        );
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('role', response.data.role);
+            console.log("register complite")
+        }
     }
 
     return { handleChange, values, handleSubmit, errors }
