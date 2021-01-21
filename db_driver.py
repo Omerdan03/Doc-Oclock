@@ -1,7 +1,6 @@
 import random
 import pymongo
 from bson.objectid import ObjectId
-#from Collection import count_documents as count
 
 Neighbourhoods = ['AEROPORTO', 'ANDORINHAS', 'ANTÔNIO HONÓRIO', 'ARIOVALDO FAVALESSA', 'BARRO VERMELHO',
                   'BELA VISTA', 'BENTO FERREIRA', 'BOA VISTA', 'BONFIM', 'CARATOÍRA', 'CENTRO', 'COMDUSA',
@@ -75,12 +74,9 @@ def get_patient_demo(id=None):
             'Handicap': handicap, "Age": age}
 
 
-
 def main():
     pass
-    #print(get_patient_mongo())
-    #add_random_patient(4)
-    print(get_opening())
+
 
 if __name__ == '__main__':
     main()
