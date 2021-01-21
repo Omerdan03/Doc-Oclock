@@ -20,17 +20,6 @@ demand = pickle.load(open('demand.pickle', 'rb'))
 def home():
     return "This is the prediction API. Send a Json and get a prediction. "
 
-#
-# @app.route('/predictions')
-# def get_id():
-#     ID = request.get_json(force=True)
-#     # ID = pd.DataFrame(json.loads(ID))
-#     # data = scaler.fit_transform(data)
-#     # prediction = model.predict(data)
-#     # output = list(map(int, prediction))
-#     # return jsonify(output)
-#     return ID
-
 
 @app.route('/predictions')
 def get_prediction():
