@@ -4,10 +4,10 @@ import axios from 'axios'
 
 export const DrForm = () => {
     const [input, setInput] = useState({
-        first_name: '',
-        last_name: '',
+        firstName: '',
+        lastName: '',
         email: '',
-        clinic_name: '',
+        clinicName: '',
         speciality: '',
     })
 
@@ -32,11 +32,11 @@ export const DrForm = () => {
             <Form onSubmit={handleSubmit} encType='multipart/form-data'>
                 <Form.Group>
                     <Form.Label>First name</Form.Label>
-                    <Form.Control name='first_name' value={input.first_name} onChange={handleChange} type="text" placeholder="Enter first name" />
+                    <Form.Control name='firstName' value={input.firstName} onChange={handleChange} type="text" placeholder="Enter first name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Last name</Form.Label>
-                    <Form.Control name='last_name' value={input.last_name} type="text" onChange={handleChange} placeholder="Enter last name" />
+                    <Form.Control name='lastName' value={input.lastName} type="text" onChange={handleChange} placeholder="Enter last name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Email</Form.Label>
@@ -44,11 +44,11 @@ export const DrForm = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Clinic/hopsital name</Form.Label>
-                    <Form.Control name='clinic_name' value={input.clinic_name} onChange={handleChange} type="text" placeholder="Enter first name" />
+                    <Form.Control name='clinicName' value={input.clinicName} onChange={handleChange} type="text" placeholder="Enter first name" />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Select speciality</Form.Label>
-                    <Form.Control name='speciality' as="select">
+                    <Form.Control name='speciality' value={input.speciality} onChange={handleChange} as="select">
                         <option>Allergy/immunology</option>
                         <option>Anesthesiology</option>
                         <option>Dermatology</option>
