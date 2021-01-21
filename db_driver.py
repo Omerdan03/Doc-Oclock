@@ -1,6 +1,7 @@
 import random
 import pymongo
 from bson.objectid import ObjectId
+#from Collection import count_documents as count
 
 Neighbourhoods = ['AEROPORTO', 'ANDORINHAS', 'ANTÔNIO HONÓRIO', 'ARIOVALDO FAVALESSA', 'BARRO VERMELHO',
                   'BELA VISTA', 'BENTO FERREIRA', 'BOA VISTA', 'BONFIM', 'CARATOÍRA', 'CENTRO', 'COMDUSA',
@@ -27,14 +28,29 @@ def get_patient_mongo(ID=None):
     doc = col.find({"_id": ObjectId(ID)})
     return doc[0]
 
-"""
+
 def get_patients_ids():
     client = pymongo.MongoClient("mongodb+srv://user:1234567890@cluster0.fg8hy.mongodb.net/?retryWrites=true&w=majority")
     db = client.test
     col = db["patients"]
-    doc = col.find()
-    return doc[0]
-"""
+    return [str(x['_id']) for x in col.find()]
+
+
+def get_opening(date=None):
+    """
+    :param date: date to look for opening [STR]
+    :return: number of opening for scheduling [INT]
+    """
+    if not date:
+        date = "2021-01-23"
+    client = pymongo.MongoClient("mongodb+srv://user:1234567890@cluster0.fg8hy.mongodb.net/?retryWrites=true&w=majority")
+    db = client.test
+    col = db["appointments"]
+    results = col.find({'requestedDate': date})
+    return 7 - results.count(True)
+
+
+
 """
 def add_random_patient(n=1):
     client = pymongo.MongoClient("mongodb+srv://user:1234567890@cluster0.fg8hy.mongodb.net/?retryWrites=true&w=majority")
@@ -64,7 +80,7 @@ def main():
     pass
     #print(get_patient_mongo())
     #add_random_patient(4)
-    #get_patients_ids()
+    print(get_opening())
 
 if __name__ == '__main__':
     main()
