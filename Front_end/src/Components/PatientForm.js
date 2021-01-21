@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export const PatientForm = () => {
     const [input, setInput] = useState({
-        firsName: '',
+        firstName: '',
         lastName: '',
         email: '',
         password: '',
@@ -34,7 +34,7 @@ export const PatientForm = () => {
       const handleSubmit= e =>{
         e.preventDefault();
         console.log(input)
-        axios.put('http://localhost:3001/pet', input)
+        axios.put('http://localhost:5000', input)
       }  
     return (
         <Container className='patient-form'>
