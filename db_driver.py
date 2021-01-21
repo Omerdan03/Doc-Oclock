@@ -1,4 +1,6 @@
 import random
+import pymongo
+from bson.objectid import ObjectId
 
 Neighbourhoods = ['AEROPORTO', 'ANDORINHAS', 'ANTÔNIO HONÓRIO', 'ARIOVALDO FAVALESSA', 'BARRO VERMELHO',
                   'BELA VISTA', 'BENTO FERREIRA', 'BOA VISTA', 'BONFIM', 'CARATOÍRA', 'CENTRO', 'COMDUSA',
@@ -15,19 +17,34 @@ Neighbourhoods = ['AEROPORTO', 'ANDORINHAS', 'ANTÔNIO HONÓRIO', 'ARIOVALDO FAV
                   'SOLON BORGES', 'SÃO BENEDITO', 'SÃO CRISTÓVÃO', 'SÃO JOSÉ', 'SÃO PEDRO', 'TABUAZEIRO',
                   'UNIVERSITÁRIO', 'VILA RUBIM']
 
-"""
-def get_patient_mongo(id):
-    # id = "60081e61a2b828629c1f8d22"
-    import pymongo
+
+def get_patient_mongo(ID=None):
+    if not ID:
+        ID = "60081e61a2b828629c1f8d22"
     client = pymongo.MongoClient("mongodb+srv://user:1234567890@cluster0.fg8hy.mongodb.net/?retryWrites=true&w=majority")
-    db = client["test"]
+    db = client.test
     col = db["patients"]
-    query = {"_id": id}
-    doc = col.find(query)
+    doc = col.find({"_id": ObjectId(ID)})
+    return doc[0]
+
+"""
+def get_patients_ids():
+    client = pymongo.MongoClient("mongodb+srv://user:1234567890@cluster0.fg8hy.mongodb.net/?retryWrites=true&w=majority")
+    db = client.test
+    col = db["patients"]
+    doc = col.find()
     return doc[0]
 """
+"""
+def add_random_patient(n=1):
+    client = pymongo.MongoClient("mongodb+srv://user:1234567890@cluster0.fg8hy.mongodb.net/?retryWrites=true&w=majority")
+    db = client.test
+    col = db["patients"]
+    my_list = [get_patient_demo() for i in range(n)]
+    col.insert_many(my_list)
+"""
 
-def get_patient_demo(id):
+def get_patient_demo(id=None):
     name = random.choice(["random name", "random name2", "random name3"])
     gender = random.choice(["Male", "Female"])
     age = random.randint(0, 100)
@@ -37,14 +54,19 @@ def get_patient_demo(id):
     diabetes = random.choice(["0", "1"])
     alcoholism = random.choice(["0", "1"])
     handicap = random.choice(["0", "1", "2", "3"])
-    sms_received = random.choice(["0", "1"])
     return {'Name': name, 'Gender': gender, 'Location': location, 'Scholarship': scholarship,
             'Hypertension': hypertension, 'Diabetes': diabetes, "Alcoholism": alcoholism,
-            'Handicap': handicap, "SMSReceived": sms_received, "Age": age}
+            'Handicap': handicap, "Age": age}
 
 
 
+def main():
+    pass
+    #print(get_patient_mongo())
+    #add_random_patient(4)
+    #get_patients_ids()
 
-
+if __name__ == '__main__':
+    main()
 
 
