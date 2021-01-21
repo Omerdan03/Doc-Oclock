@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
-from datetime import datetime
+import datetime
 from datetime import date
 from db_driver import *
 
@@ -41,42 +41,47 @@ def get_data():
 
 @app.route('/predictions')
 def get_prediction():
-    #ID = request.get_json(force=True)
-    # data = get_patient_demo(ID)
-    # data = pd.DataFrame(get_patient_mongo(None), index=[0])
-    data = pd.DataFrame(get_patient_demo(None), index=[0])
+    today = datetime.datetime.today()
+    # in_dict = json.load(request.get_json(force=True))
+    # ID = in_dict['patientId']
+    # req_day = in_dict['requestedDate']
+    req_day = '2021-01-28'
+    req_day = datetime.datetime.strptime(req_day, '%Y-%m-%d')
+    data = get_patient_mongo('60094e1f3e94cd527cf36bb6')
+    # data = pd.DataFrame(get_patient_demo(None), index=[0])
     df = pd.DataFrame(index=[0])
-    if data.loc[0, 'Gender'] == 'Female':
-        data.loc[0, 'Gender'] = 'F'
-    elif data.loc[0, 'Gender'] == 'Male':
-        data.loc[0, 'Gender'] = 'M'
-    df['Gender'] = pd.Series(encoders[0].transform(data['Gender']))
+    if data['Gender'].lower() == 'female':
+        df['Gender'] = 0
+    elif data['Gender'].lower() == 'male':
+        df['Gender'] = 1
     df['Age'] = data['Age']
     df['ScheduledDay'] = 0
     df['AppointmentDay'] = 0
-    df['wait_time'] = 0
+    df['wait_time'] = (req_day - today).days
     df['Scholarship'] = data['Scholarship']
     df['Hypertension'] = data['Hypertension']
     df['Diabetes'] = data['Diabetes']
     df['Alcoholism'] = data['Alcoholism']
     df['Handicap'] = data['Handicap']
-    # data = pd.DataFrame(data2, index=[0])  # TODO The data should be in the same order like df_t in order for the model to work. \
-    # TODO (gender - Age - ScheduledDay - AppointmentDay - wait_time - Scholarship - Hypertension - Diabetes - Alcoholism - Handicap - SMSReceived - encoded Neighbourhood
-    # data['Gender'] = pd.Series(encoders[0].transform(data['Gender']), index=data.index)  # TODO the gender is Male or female not M/F like our database (your encoder wont work)
-    today = pd.to_datetime('today').weekday()
-    # df['Neighbourhood'] = encoders[1].transform(data['Location'])
-    enc_arr = encoders[1].transform(data['Location'].to_numpy().reshape(-1, 1)).toarray()
-    df_neighbourhoods = pd.DataFrame(data=enc_arr, columns=encoders[1].get_feature_names(),
-                                     index=data.index)
+
+    enc_arr = encoders[1].transform(np.array(data['Location']).reshape(-1, 1)).toarray()
+    df_neighbourhoods = pd.DataFrame(data=enc_arr, columns=encoders[1].get_feature_names())
     df = pd.concat([df, df_neighbourhoods], axis=1)
-    df = pd.DataFrame(encoders[2].fit_transform(df), columns=df.columns)
-    predictions = list()
+    df = pd.DataFrame(encoders[2].transform(df), columns=df.columns)
+    predictions = dict()
     for day in range(7):      # TODO We should not predict on day 5 & 6
-        df['ScheduledDay'] = day
-        df['wait_time'] = (df['AppointmentDay'] - df['ScheduledDay'])
-        prediction = model.predict(df)  # TODO the wait time should be different between each of those prediction
-        predictions.append(prediction)   # TODO why int?
-    return predictions
+        df['ScheduledDay'] = req_day.day + day
+        if df['ScheduledDay'].any() in [6, 7]:
+            predictions[req_day + day] = 0
+        else:
+            prediction = model.predict(df)  # TODO the wait time should be different between each of those prediction
+            predictions[req_day + datetime.timedelta(days=day)] = prediction   # TODO why int?
+        df['wait_time'] += 1
+    output = dict()
+    for key in predictions:
+        new_key = key.strftime('%Y-%m-%d')
+        output[new_key] = predictions[key]
+    return output
     # return jsonify(predictions)
 
 
