@@ -69,20 +69,26 @@ def get_prediction():
     df = pd.concat([df, df_neighbourhoods], axis=1)
     df = pd.DataFrame(encoders[2].transform(df), columns=df.columns)
     predictions = dict()
-    for day in range(7):      # TODO We should not predict on day 5 & 6
-        df['ScheduledDay'] = req_day.day + day
-        if df['ScheduledDay'].any() in [6, 7]:
-            predictions[req_day + day] = 0
+    for day in range(15):
+        df['ScheduledDay'] = (req_day.weekday() + day) % 7
+        if df['ScheduledDay'].any() in [5, 6]:
+            predictions[req_day + datetime.timedelta(days=day)] = 0
         else:
-            prediction = model.predict(df)  # TODO the wait time should be different between each of those prediction
-            predictions[req_day + datetime.timedelta(days=day)] = prediction   # TODO why int?
+            prediction = model.predict(df)
+            predictions[req_day + datetime.timedelta(days=day)] = prediction
         df['wait_time'] += 1
     output = dict()
     for key in predictions:
         new_key = key.strftime('%Y-%m-%d')
-        output[new_key] = predictions[key]
-    return output
-    # return jsonify(predictions)
+        opening = get_opening(new_key)
+        if opening <= 0:
+            output[new_key] = 0
+        elif predictions[key] > 0.5 - (opening/7)*(0.5-0.2):
+            output[new_key] = 0
+        else:
+            output[new_key] = 1
+    #return output
+    return jsonify(output)
 
 
 if __name__ == '__main__':
