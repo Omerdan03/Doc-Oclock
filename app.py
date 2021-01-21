@@ -25,7 +25,8 @@ def home():
 def get_prediction():
     today = datetime.datetime.today()
     # in_dict = json.load(request.get_json(force=True))
-    in_dict = request.get_json(force=True)
+    # in_dict = request.get_json(force=True)
+    in_dict = [request.args.get(x) for x in request.args]
     return in_dict
     # in_dict = json.load(request.args.get('data'))
     # ID = in_dict['patientId']
