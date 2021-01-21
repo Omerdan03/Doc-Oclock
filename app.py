@@ -27,7 +27,7 @@ def get_prediction():
     # in_dict = json.load(request.get_json(force=True))
     # in_dict = request.get_json(force=True)
     in_dict = [request.args.get(x) for x in request.args]
-    return in_dict
+    return " ".join(in_dict)
     # in_dict = json.load(request.args.get('data'))
     # ID = in_dict['patientId']
     # req_day = in_dict['requestedDate']
