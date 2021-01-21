@@ -49,13 +49,12 @@ def get_prediction():
     data = pd.concat([data, df_neighbourhoods], axis=1)
     data.drop('Neighbourhood', axis=1, inplace=True)
     data = pd.DataFrame(encoders[2].fit_transform(data), columns=data.columns)
-    return data.shape
-    # predictions = list()
-    # for day in range(6):
-    #     data['AppointmentDay'] = day
-    #     prediction = model.predict(data)
-    #     predictions.append(int(prediction))
-    # return jsonify(predictions)
+    predictions = list()
+    for day in range(6):
+        data['AppointmentDay'] = day
+        prediction = model.predict(data)
+        predictions.append(int(prediction))
+    return jsonify(predictions)
 
 
 if __name__ == '__main__':
