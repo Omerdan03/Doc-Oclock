@@ -36,6 +36,7 @@ def home():
 def get_prediction():
     today = datetime.datetime.today()
     in_dict = json.load(request.get_json(force=True))
+    print(in_dict)
     ID = in_dict['patientId']
     req_day = in_dict['requestedDate']
     # req_day = '2021-01-28'
@@ -61,6 +62,7 @@ def get_prediction():
     df_neighbourhoods = pd.DataFrame(data=enc_arr, columns=encoders[1].get_feature_names())
     df = pd.concat([df, df_neighbourhoods], axis=1)
     df = pd.DataFrame(encoders[2].transform(df), columns=df.columns)
+    print(df)
     predictions = dict()
     for day in range(15):
         df['ScheduledDay'] = (req_day.weekday() + day) % 7
