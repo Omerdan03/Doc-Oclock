@@ -1,0 +1,44 @@
+.home-login {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.light-blue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: white;
+    background-color: #4a64b8;
+    height: 50vh;
+    font-size: 3rem;
+}
+
+.white-container-patient {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.white-container-patient img {
+    height: 35vh;
+    margin-top: 2%;
+}
+
+.white-text {
+    width: 40%;
+    margin: 0 0 4% 15%;
+    text-align: justify;
+}
+
+.little-blue-container {
+    background-color: #09427d;
+    padding: 2% 10%;
+    color: white;
+    border-radius: 15px;
+    margin-top: -3%;
+    font-size: 1.2rem;
+}

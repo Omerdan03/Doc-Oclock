@@ -1,0 +1,110 @@
+.home {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+/* NAVBAR */
+
+.nav-home {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.nav-home img {
+    height: 70px;
+    margin-left: 50%;
+}
+
+.link-container {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 4%;
+}
+
+.nav-link {
+    color: #052e4c;
+    font-size: 1.2rem;
+}
+
+.nav-link:hover {
+    color: #dc3c4d;
+}
+
+/* BODDY */
+
+.title-text {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -5%;
+}
+
+.title-container img {
+    height: 35vh;
+    margin-right: 1%;
+}
+
+.text-container {
+    display: flex;
+}
+
+.blue-text, .red-text {
+    font-size: 5rem;
+    font-weight: 600;
+    margin-right: 2%;
+}
+
+.blue-text {
+    color: #052e4c;
+}
+
+.red-text {
+    color: #dc3c4d;
+}
+
+.sub-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #052e4c;
+    margin-top: -3%;
+}
+
+/* SECOND CONTAINER */
+
+.container-info {
+    background-color: #4a64b8;
+    height: 45vh;
+    padding-right: 5%;
+}
+
+.container-info {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.container-info img {
+    height: 80%;
+    margin-left: 6%;
+}
+
+.app-info-text {
+    background-color: #052e4c;
+    color: white;
+    padding: 2% 3%;
+    margin: 2% 0 3% 10%;
+    width: 40%;
+    border-radius: 15px;
+    text-align: justify;
+}

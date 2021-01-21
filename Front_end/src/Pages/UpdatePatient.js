@@ -1,10 +1,10 @@
 import { Container } from 'react-bootstrap';
-import { PatientForm, PatientNav } from '../Components/ComponentIndex';
+import { PatientForm, PatientAndDocNav } from '../Components/ComponentIndex';
 
 export const UpdatePatient = () =>{
     return(
         <Container>
-            <PatientNav />
+            <PatientAndDocNav />
             <h1>Update personal profile</h1>
             <PatientForm />
         </Container>

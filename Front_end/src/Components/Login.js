@@ -1,8 +1,26 @@
 import { Form, Button } from 'react-bootstrap'
 import { useLogin } from '../Hooks/useLogin'
+import axios from './axios'
+import { useHistory } from 'react-router-dom'
 
 export const Login = () => {
     const {handleChange, values, handleSubmit} = useLogin();
+  console.log(handleSubmit)
+
+  const logIn = async (event) => {
+    event.preventDefault()
+    const response = await axios.post("/user/login", values)
+    if (response.status === 200) {
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('role', response.data.role);
+    }
+    if (localStorage.getItem('role') === "basic") {
+      history.push('/home-login')
+    } else {
+      history.push('/adm')
+    }
+    const reload = window.location.reload()
+  }
 
     return (
         <Form onSubmit={handleSubmit} className='loginForm' action="#" encType="multipart/form-data">

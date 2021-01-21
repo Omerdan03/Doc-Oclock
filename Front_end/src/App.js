@@ -7,7 +7,7 @@ import { Home, DrLogin, PatientLogin, AdminDash, PatientHome, UpdatePatient, Upd
 
 function App() {
   return (
-    <Container>
+    <div>
       <Router>
         <Switch>
           <Route path="/updatedr">
@@ -36,7 +36,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </Container>
+    </div>
   );
 }
 
