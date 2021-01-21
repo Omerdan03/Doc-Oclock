@@ -1,7 +1,7 @@
 import json
 import os
 import pickle
-
+import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
@@ -12,8 +12,8 @@ app = Flask(__name__)
 model = load_model('model')
 encoders = pickle.load(open('encoders.pickle', 'rb'))
 demand = pickle.load(open('demand.pickle', 'rb'))
-data2 = {'Gender': 'F', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA', 'Scholarship': 0,
-                      'Hypertension': 1, 'Diabetes': 0, 'Alcoholism': 0, 'Handicap': 0}
+data2 = {'Gender': 'F','ScheduledDay': '2016-04-29T18:38:08Z', 'Age': 62, 'Neighbourhood': 'JARDIM DA PENHA',
+         'Scholarship': 0, 'Hypertension': 1, 'Diabetes': 0, 'Alcoholism': 0, 'Handicap': 0}
 
 @app.route("/")
 def home():
@@ -40,6 +40,7 @@ def get_prediction():
     # data = get_data()
     data = pd.DataFrame(data2, index=[0])
     data['Gender'] = pd.Series(encoders[0].transform(data['Gender']), index=data.index)
+    data['ScheduledDay'] = pd.to_datetime(data['ScheduledDay']).dt.date.astype('datetime64[ns]').dt.weekday
     # encoders[1].fit(data['Neighbourhood'].to_numpy().reshape(-1, 1))
     enc_arr = encoders[1].transform(data['Neighbourhood'].to_numpy().reshape(-1, 1)).toarray()
     Neighbourhoods = encoders[1].get_feature_names()
@@ -51,7 +52,7 @@ def get_prediction():
     data = pd.DataFrame(encoders[2].fit_transform(data), columns=data.columns)
     predictions = list()
     for day in range(6):
-        data['AppointmentDay'] = day
+        data['ScheduledDay'] = day
         prediction = model.predict(data)
         predictions.append(int(prediction))
     return jsonify(predictions)
