@@ -35,13 +35,13 @@ def home():
 @app.route('/predictions')
 def get_prediction():
     today = datetime.datetime.today()
-    # in_dict = json.load(request.get_json(force=True))
-    # ID = in_dict['patientId']
-    # req_day = in_dict['requestedDate']
-    req_day = '2021-01-28'
+    in_dict = json.load(request.get_json(force=True))
+    ID = in_dict['patientId']
+    req_day = in_dict['requestedDate']
+    # req_day = '2021-01-28'
     req_day = datetime.datetime.strptime(req_day, '%Y-%m-%d')
     data = get_patient_mongo('60094e1f3e94cd527cf36bb6')
-    # data = pd.DataFrame(get_patient_demo(None), index=[0])
+    data = get_patient_mongo(ID)
     df = pd.DataFrame(index=[0])
     if data['Gender'].lower() == 'female':
         df['Gender'] = 0
