@@ -1,28 +1,38 @@
-a{
-  display: block;
-  margin: 20px;
+body {
+  background-color: #f8f9fa;
 }
 
-.App{
-  text-align: center;
-  background-color: lightblue;
+a {
+  display: inline-block;
+  /* margin: 20px; */
+  text-decoration: none !important;
+  transition: 250ms
+}
+
+.App {
+  /* text-align: center; */
+  background-color: #f8f9fa !important;
   border-radius: 6px;
   height: 100vh
 }
 
-.block{
+.block {
   display: block;
 }
 
-.loginForm{
+.loginForm {
   margin: 15px;
 }
 
-.patient-nav{
+.patient-nav {
   border-radius: 6px;
   padding: 0px;
 }
 
-.patient-form{
+.patient-form {
   margin: 15px;
+}
+
+.single-item {
+  background-color: #fff;
 }

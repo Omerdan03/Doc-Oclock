@@ -21,5 +21,5 @@ export {
   DrForm,
   AppForm,
   DrSignup,
-  DrLoginForm,
+  DrLoginForm
 };

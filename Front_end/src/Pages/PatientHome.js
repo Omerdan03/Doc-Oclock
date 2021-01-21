@@ -1,31 +1,9 @@
 import { ListAppointments } from "../Components/ListAppointments";
 import { Container } from "react-bootstrap";
-import { DrNav } from "../Components/DrNav";
-import axios from "axios";
+import { PatientNav } from "../Components/PatientNav";
 
 export const PatientHome = () => {
   // request to api based on patient_id
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    const result = axios.post("http://localhost:5000/api/register-patient", {
-      headers: {
-        // "auth-token": localStorage.getItem("UserToken"),
-        data: {
-          fullName: "Mr. Test User",
-          phone: "999000000",
-          email: "test@test.test",
-          birthDay: "31-12-2021",
-          gender: "m",
-          location: "8582 Leeton Ridge Lane Henderson, KY 42420",
-          maritalStatus: "married",
-          password: "test@test.test",
-        },
-      },
-    });
-
-    console.log(result);
-  };
 
   const mockAppointments = [
     {
@@ -55,13 +33,17 @@ export const PatientHome = () => {
     },
   ];
   return (
-    <Container>
-      <DrNav />
-      <h1>Patient Home</h1>
-      <ListAppointments items={mockAppointments} />
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Register Fake User</button>
-      </form>
-    </Container>
+    <>
+      <PatientNav />
+      <Container className="mt-5">
+        <h1>Welcome Back, Username</h1>
+
+        <h3 className="text-secondary mt-5">Your next appointments</h3>
+        <ListAppointments items={mockAppointments} />
+
+        <h3 className="text-secondary mt-5">Past appointments</h3>
+        <ListAppointments items={mockAppointments} />
+      </Container>
+    </>
   );
 };
