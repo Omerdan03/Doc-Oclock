@@ -1,10 +1,15 @@
 import { DrForm } from '../Components/ComponentIndex'
 import { Container } from 'react-bootstrap'
+import { DrLoginNav } from '../Components/DrLoginNav'
 export const UpdateDr = () =>{
     return(
-        <Container>
-            <h1>Update profile information</h1>
+        <div>
+            <DrLoginNav />
+            <Container>
+                <h1 className="mt-5">Update profile information</h1>
             <DrForm />
         </Container>
+        </div>
+
     )
 }

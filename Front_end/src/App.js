@@ -3,7 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Home, DrLogin, PatientLogin, AdminDash, PatientHome, UpdatePatient, UpdateDr, DrHome } from "./Pages/PageIndex";
+import { Home, DrLogin, PatientLogin, PatientHome, UpdatePatient, UpdateDr, DrHome } from "./Pages/PageIndex";
 import CreateAppointment from "./Components/CreatAppointments";
 function App() {
   return (
@@ -15,9 +15,6 @@ function App() {
           </Route>
           <Route path="/updatepatient">
             <UpdatePatient />
-          </Route>
-          <Route path="/admindash">
-            <AdminDash />
           </Route>
           <Route path="/patientlogin">
             <PatientLogin />

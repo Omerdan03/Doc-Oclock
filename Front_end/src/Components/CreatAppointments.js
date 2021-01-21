@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { PatientNavLogin } from './PatientNavlogin'
 
 function CreateAppointment() {
     const [appointmentsArray, setAppointmentsArray] = useState([]);
@@ -61,7 +62,13 @@ function CreateAppointment() {
 
     return (
         <div>
+
+            <PatientNavLogin />
+            <div className="col-7 m-auto">
+
+
             <Form onSubmit={handleSubmit}>
+                    <h1 className="mt-5">Create Appointment</h1>
                 <Form.Group onChange={handleSpecialtyChange}>
                     <Form.Label>Select the specialty</Form.Label>
                     <Form.Control as="select">
@@ -102,6 +109,8 @@ function CreateAppointment() {
                 );
             })}
         </div>
+        </div>
+
     );
 }
 

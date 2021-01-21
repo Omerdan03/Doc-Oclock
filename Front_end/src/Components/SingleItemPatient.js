@@ -1,18 +1,21 @@
+import { Link } from "react-router-dom";
+
 export const SingleItemPatient = ({ item }) => {
   const { patient_fullname, patient_gender, patient_age, patient_symptoms } = item;
-
   return (
-    <div className="d-flex justify-content-start border rounded my-1">
-      <div>PatientAvatar</div>
-      <div>
-        <h4>
-          <a href="#patient_id">{patient_fullname}</a>
-        </h4>
-        <p>
-          {patient_gender}, {patient_age}
-        </p>
-        <p>{patient_symptoms}</p>
+    <Link to="/patient/a9sd8f7a9sd8fa9s" className="single-item shadow-sm rounded-lg text-dark d-block">
+      <div className="d-flex justify-content-start   my-3 p-3">
+        <div className="rounded-circle">DC</div>
+        <div>
+          <h4>
+            {patient_fullname}{" "}
+            <small className="text-secondary">
+              {patient_gender}, {patient_age}
+            </small>
+          </h4>
+          <p className="text-secondary">{patient_symptoms || "No symptoms"}</p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
