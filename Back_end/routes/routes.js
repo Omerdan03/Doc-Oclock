@@ -10,7 +10,7 @@ router.post('/register-doctor', createDoctor);
 router.post('/login-doctor', logInDoctor);
 
 const { patient, updatePatient, createPatients, logInPatients } = require('../controllers/patient');
-const { appointment, updateAppointment, createAppointment } = require('../controllers/appointment');
+const { appointment, updateAppointment, createAppointment, appointments } = require('../controllers/appointment');
 const { verifyToken } = require('../controllers/verifyToken');
 
 // patient routes
@@ -21,6 +21,7 @@ router.post('/login-patient', logInPatients);
 
 //appointment routes
 router.put('/update-appointment/:id', updateAppointment);
-router.post('/create-appointment', createAppointment);
+router.post('/create-appointment', verifyToken, createAppointment);
+router.get('/all-appointments', verifyToken, appointments)
 
 module.exports = router

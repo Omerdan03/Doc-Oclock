@@ -3,8 +3,18 @@ const lodash = require('lodash')
 const { registerValidation } = require('../validationPatient')
 
 
+// Get all appointments from DB
+exports.appointments = async(req, res) => {
+    try {
+        const appointments = await Appointment.find();
+        res.status(200).json(appointments);
+    } catch (e) {
+        res.status(500).json({ error: e });
+    }
+};
+
 // Get current appointment profile
-exports.appointment = async (req, res) => {
+exports.appointment = async(req, res) => {
     try {
         const appointment = await Appointment.find({ email: req.params.id });
         res.status(200).json({ success: profile });
@@ -13,7 +23,7 @@ exports.appointment = async (req, res) => {
     }
 };
 //update appointment info
-exports.updateAppointment = async (req, res) => {
+exports.updateAppointment = async(req, res) => {
     let id = req.params.id
     let update = lodash.pick(req.body, ["doctor_id", "patient_id", "realTimeStart", "dateTimeAppointment", "appointmentCreationDay", "duration", "firstVisit", "location", "symptoms", "status", "paymentDateTime", "doctorSummary"]);
     update = lodash.pickBy(update, lodash.identity);
@@ -24,23 +34,17 @@ exports.updateAppointment = async (req, res) => {
     })
 }
 
-exports.createAppointment = async (req, res) => {
+exports.createAppointment = async(req, res) => {
     // const { error } = registerValidation(req.body)
     // if (error) {
     //     return res.status(400).send(error.details[0].message)
     // }
     //creat appointment
     const appointment = new Appointment({
-        doctor_id: req.body.doctor_id,
-        patient_id: req.body.patient_id,
-        dateTimeSchedule: req.body.dateTimeSchedule,
-        duration: req.body.duration,
-        firstVisit: req.body.firstVisit,
-        location: req.body.location,
-        symptoms: req.body.symptoms,
-        status: req.body.status,
-        paymentDateTime: req.body.paymentDateTime,
-        doctorSummary: req.body.doctorSummary
+        patientId: req.user,
+        specialty: req.body.specialty,
+        requestedDate: req.body.date,
+        reason: req.body.reason
     })
     try {
         const savedAppointment = await appointment.save()
